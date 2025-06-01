@@ -1,9 +1,13 @@
 # bot.py
 
+from dotenv import load_dotenv
 from api_client import CsFloatAPIClient
 from market_analyzer import MarketAnalyzer
 import time
 import logging
+import os
+
+load_dotenv()
 
 # Set up logging
 logging.basicConfig(
@@ -14,7 +18,7 @@ logging.basicConfig(
 
 
 def main():
-    api_key = "sd-gaYQYb8cKZ-iv7s9hEih0oKdt7ygZ"
+    api_key = os.getenv("CSFLOAT_API_KEY")
     client = CsFloatAPIClient(api_key=api_key)
 
     analyzer = MarketAnalyzer(
